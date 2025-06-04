@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CEMET | Servicios con MALDI-TOF</title>
+  <title>CEMET | Servicios MALDI-TOF</title>
   <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -27,15 +27,15 @@
       <h2>Servicios</h2>
       <div class="service">
         <h3>Identificación Microbiana</h3>
-        <p>Recepción y análisis de cepas bacterianas y fúngicas mediante espectrometría de masas MALDI-TOF, utilizando bases de datos públicas y privadas para una identificación precisa.</p>
+        <p>Análisis de bacterias y hongos por espectrometría de masas MALDI-TOF, con bases de datos públicas y privadas.</p>
       </div>
       <div class="service">
         <h3>Análisis Peptidómico</h3>
-        <p>Estudios de perfiles peptídicos en diversas matrices biológicas, incluyendo análisis bioinformático y emisión de informes detallados.</p>
+        <p>Perfilado peptídico en matrices biológicas, con evaluación bioinformática y emisión de informes.</p>
       </div>
       <div class="service">
         <h3>Semi-cuantificación de Péptidos</h3>
-        <p>Desarrollo y aplicación de métodos para la semi-cuantificación de péptidos, incluyendo curvas de calibración y evaluación de parámetros analíticos.</p>
+        <p>Estudios con estándar del péptido: curvas de calibración, LOD, LOQ, recuperación y efecto matriz.</p>
       </div>
     </div>
   </section>
@@ -43,10 +43,10 @@
   <section class="equipo">
     <div class="container">
       <h2>Equipamiento</h2>
-      <p>Contamos con tecnología de punta en espectrometría de masas MALDI-TOF para garantizar resultados precisos y confiables.</p>
+      <p>Contamos con tecnología de punta en espectrometría de masas MALDI-TOF.</p>
       <div class="gallery">
-        <img src="https://www.bruker.com/content/bruker/xx/en/products-and-solutions/mass-spectrometry/maldi-tof/_jcr_content/root/responsivegrid/teaser_copy_copy_copy_copy_copy_copy_copy.coreimg.jpeg/1639579444916/bruker-maldi-tof.jpg" alt="Equipo MALDI-TOF Bruker">
-        <img src="https://www.shimadzu.com/an/products/maldi/ms/maldi-8030/_jcr_content/root/responsivegrid/teaser_copy_copy_copy.coreimg.jpeg/1639579444916/shimadzu-maldi-8030.jpg" alt="Equipo MALDI-8030 Shimadzu">
+        <img src="https://www.bruker.com/content/bruker/xx/en/products-and-solutions/mass-spectrometry/maldi-tof/_jcr_content/root/responsivegrid/teaser_copy_copy_copy_copy_copy_copy_copy.coreimg.jpeg/1639579444916/bruker-maldi-tof.jpg" alt="MALDI-TOF Bruker">
+        <img src="https://www.shimadzu.com/an/products/maldi/ms/maldi-8030/_jcr_content/root/responsivegrid/teaser_copy_copy_copy.coreimg.jpeg/1639579444916/shimadzu-maldi-8030.jpg" alt="MALDI-TOF Shimadzu">
       </div>
     </div>
   </section>
@@ -54,8 +54,17 @@
   <section class="contacto">
     <div class="container">
       <h2>Contacto</h2>
-      <p>Para consultas o solicitudes de servicios, contáctanos a través de nuestro correo electrónico o formulario de contacto.</p>
-      <a href="mailto:contacto@cemet.org" class="btn">Enviar correo</a>
+      <p>Consultas o solicitudes de servicios:</p>
+
+      <form action="https://formspree.io/f/xzzgzebg" method="POST" class="formulario">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="message" rows="5" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
     </div>
   </section>
 
