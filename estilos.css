@@ -1,0 +1,82 @@
+/* estilos.css */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #004080;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.hero {
+  background-color: #e6f2ff;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.hero .btn {
+  background-color: #004080;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.services {
+  padding: 60px 0;
+}
+
+.services .service {
+  margin-bottom: 40px;
+}
+
+.equipo {
+  background-color: #f2f2f2;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.equipo .gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.equipo .gallery img {
+  width: 300px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.contacto {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.contacto .btn {
+  background-color: #004080;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #004080;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
