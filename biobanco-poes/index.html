@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+POEs · Biobanco HEC-CEMET
+</title>
+
+
+<style>
+
+
+/* ============================================================
+   GENERAL
+============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  background: #eef2f5;
+
+  color: #243b53;
+}
+
+
+/* ============================================================
+   CABECERA
+============================================================ */
+
+.header {
+
+  height: 72px;
+
+  background: #153b5b;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding:
+    0
+    22px;
+
+  box-shadow:
+    0
+    2px
+    8px
+    rgba(0,0,0,.18);
+
+  position: relative;
+
+  z-index: 20;
+}
+
+
+.header-title {
+
+  font-size: 21px;
+
+  font-weight: 650;
+
+  letter-spacing: .2px;
+}
+
+
+.header-subtitle {
+
+  margin-top: 3px;
+
+  font-size: 12.5px;
+
+  opacity: .82;
+}
+
+
+.header-version {
+
+  font-size: 12px;
+
+  opacity: .75;
+}
+
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+
+.layout {
+
+  display: flex;
+
+  width: 100%;
+
+  height:
+    calc(100vh - 72px);
+}
+
+
+/* ============================================================
+   SIDEBAR
+============================================================ */
+
+.sidebar {
+
+  width: 390px;
+
+  min-width: 310px;
+
+  height: 100%;
+
+  overflow-y: auto;
+
+  background: white;
+
+  border-right:
+    1px
+    solid
+    #d8e0e6;
+}
+
+
+/* ============================================================
+   BUSCADOR
+============================================================ */
+
+.search-container {
+
+  position: sticky;
+
+  top: 0;
+
+  z-index: 10;
+
+  padding: 15px;
+
+  background: white;
+
+  border-bottom:
+    1px
+    solid
+    #e3e8ec;
+}
+
+
+#search {
+
+  width: 100%;
+
+  border:
+    1px
+    solid
+    #b8c4cc;
+
+  border-radius: 7px;
+
+  padding:
+    10px
+    12px;
+
+  font-size: 14px;
+
+  color: #243b53;
+
+  background: white;
+}
+
+
+#search:focus {
+
+  outline: none;
+
+  border-color: #39749a;
+
+  box-shadow:
+    0
+    0
+    0
+    2px
+    rgba(57,116,154,.15);
+}
+
+
+/* ============================================================
+   SECCIONES
+============================================================ */
+
+.section {
+
+  border-bottom:
+    1px
+    solid
+    #edf0f2;
+}
+
+
+.section-title {
+
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  border: none;
+
+  background: #f7f9fa;
+
+  color: #243b53;
+
+  text-align: left;
+
+  padding:
+    13px
+    15px;
+
+  font-size: 13.5px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+}
+
+
+.section-title:hover {
+
+  background: #edf3f6;
+}
+
+
+.arrow {
+
+  margin-left: 10px;
+
+  font-size: 13px;
+}
+
+
+.section-content {
+
+  display: block;
+}
+
+
+/* ============================================================
+   DOCUMENTOS
+============================================================ */
+
+.doc-link {
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 7px;
+
+  border: none;
+
+  border-left:
+    4px
+    solid
+    transparent;
+
+  background: white;
+
+  color: #334e68;
+
+  text-align: left;
+
+  padding:
+    9px
+    13px
+    9px
+    20px;
+
+  font-size: 12.8px;
+
+  line-height: 1.4;
+
+  cursor: pointer;
+}
+
+
+.doc-link:hover {
+
+  background: #edf4f8;
+}
+
+
+.doc-link.active {
+
+  background: #dcebf4;
+
+  border-left-color: #176b94;
+
+  color: #123d57;
+
+  font-weight: 600;
+}
+
+
+.index-link {
+
+  font-weight: 600;
+}
+
+
+.doc-icon {
+
+  flex: 0 0 auto;
+
+  line-height: 1.4;
+}
+
+
+/* ============================================================
+   ÁREA DERECHA
+============================================================ */
+
+.main {
+
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #eef2f5;
+}
+
+
+/* ============================================================
+   BARRA DE NAVEGACIÓN
+============================================================ */
+
+.toolbar {
+
+  height: 58px;
+
+  min-height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding:
+    8px
+    12px;
+
+  background: white;
+
+  border-bottom:
+    1px
+    solid
+    #d8e0e6;
+
+  box-shadow:
+    0
+    1px
+    3px
+    rgba(0,0,0,.05);
+
+  z-index: 5;
+}
+
+
+.toolbar button {
+
+  border:
+    1px
+    solid
+    #becbd3;
+
+  background: #ffffff;
+
+  color: #29475b;
+
+  border-radius: 6px;
+
+  padding:
+    8px
+    11px;
+
+  font-size: 13px;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+
+.toolbar button:hover:not(:disabled) {
+
+  background: #edf4f8;
+
+  border-color: #8eaaba;
+}
+
+
+.toolbar button:disabled {
+
+  opacity: .35;
+
+  cursor: not-allowed;
+}
+
+
+.word-button {
+
+  margin-left: 4px !important;
+
+  background: #153b5b !important;
+
+  color: white !important;
+
+  border-color: #153b5b !important;
+}
+
+
+.word-button:hover {
+
+  background: #1d5279 !important;
+}
+
+
+.document-info {
+
+  flex: 1;
+
+  min-width: 0;
+
+  padding:
+    0
+    8px;
+}
+
+
+.current-title {
+
+  font-size: 13.5px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.current-category {
+
+  margin-top: 2px;
+
+  font-size: 11.5px;
+
+  color: #718096;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+.counter {
+
+  font-size: 11.5px;
+
+  color: #718096;
+
+  white-space: nowrap;
+}
+
+
+/* ============================================================
+   VISOR
+============================================================ */
+
+.viewer {
+
+  flex: 1;
+
+  min-height: 0;
+
+  position: relative;
+
+  background: #dfe5e9;
+}
+
+
+#docframe {
+
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+
+  background: white;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (
+  max-width: 900px
+) {
+
+  .sidebar {
+
+    width: 320px;
+
+    min-width: 270px;
+  }
+
+
+  .document-info {
+
+    display: none;
+  }
+
+
+  .counter {
+
+    display: none;
+  }
+}
+
+
+@media (
+  max-width: 650px
+) {
+
+  .sidebar {
+
+    width: 260px;
+
+    min-width: 220px;
+  }
+
+
+  .toolbar button {
+
+    font-size: 11px;
+
+    padding:
+      7px
+      8px;
+  }
+
+
+  .header-version {
+
+    display: none;
+  }
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ==========================================================
+     CABECERA
+=========================================================== -->
+
+<header class="header">
+
+  <div>
+
+    <div class="header-title">
+      Biobanco HEC · CEMET
+    </div>
+
+    <div class="header-subtitle">
+      Sistema documental · Procedimientos Operativos Estandarizados
+    </div>
+
+  </div>
+
+
+  <div class="header-version">
+    Portal documental
+  </div>
+
+</header>
+
+
+<!-- ==========================================================
+     LAYOUT
+=========================================================== -->
+
+<div class="layout">
+
+
+  <!-- ========================================================
+       SIDEBAR
+  ========================================================= -->
+
+  <aside class="sidebar">
+
+
+    <div class="search-container">
+
+      <input
+
+        id="search"
+
+        type="search"
+
+        placeholder="Buscar código, POE o procedimiento..."
+
+        oninput="filterDocs()"
+
+        autocomplete="off"
+
+      >
+
+    </div>
+
+
+    <div id="menu">
+
+<div class="section" data-category="Manual marco"><button class="section-title" onclick="toggleSection(this)"><span>Manual marco</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link" data-doc-index="1" data-search="manual marco 01 manual marco biobanco hec cemet" onclick="openDoc(1)"><span class="doc-icon">📄</span><span>01 Manual Marco Biobanco HEC CEMET</span></button></div></div><div class="section" data-category="POEs comunes"><button class="section-title" onclick="toggleSection(this)"><span>POEs comunes</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link index-link" data-doc-index="2" data-search="poes comunes 1. índice poe comunes biobanco hec cemet" onclick="openDoc(2)"><span class="doc-icon">▤</span><span>1. Índice POE Comunes Biobanco HEC CEMET</span></button><button class="doc-link" data-doc-index="3" data-search="poes comunes bb-bio-001 - bioseguridad, vestimenta y elementos de protección personal" onclick="openDoc(3)"><span class="doc-icon">📄</span><span>BB-BIO-001 - Bioseguridad, vestimenta y elementos de protección personal</span></button><button class="doc-link" data-doc-index="4" data-search="poes comunes bb-bio-002 - limpieza, desinfección y orden de áreas" onclick="openDoc(4)"><span class="doc-icon">📄</span><span>BB-BIO-002 - Limpieza, desinfección y orden de áreas</span></button><button class="doc-link" data-doc-index="5" data-search="poes comunes bb-bio-003 - gestión de residuos, derrames y exposición accidental" onclick="openDoc(5)"><span class="doc-icon">📄</span><span>BB-BIO-003 - Gestión de residuos, derrames y exposición accidental</span></button><button class="doc-link" data-doc-index="6" data-search="poes comunes bb-dat-001 - registro y trazabilidad en noraybanks" onclick="openDoc(6)"><span class="doc-icon">📄</span><span>BB-DAT-001 - Registro y trazabilidad en NORAYBANKS</span></button><button class="doc-link" data-doc-index="7" data-search="poes comunes bb-dat-002 - confidencialidad, codificación, acceso y exportación de datos" onclick="openDoc(7)"><span class="doc-icon">📄</span><span>BB-DAT-002 - Confidencialidad, codificación, acceso y exportación de datos</span></button><button class="doc-link" data-doc-index="8" data-search="poes comunes bb-eqp-001 - operación de ultrafreezers de -80 °c" onclick="openDoc(8)"><span class="doc-icon">📄</span><span>BB-EQP-001 - Operación de ultrafreezers de -80 °C</span></button><button class="doc-link" data-doc-index="9" data-search="poes comunes bb-eqp-002 - operación segura de ultrafreezers de -150 °c" onclick="openDoc(9)"><span class="doc-icon">📄</span><span>BB-EQP-002 - Operación segura de ultrafreezers de -150 °C</span></button><button class="doc-link" data-doc-index="10" data-search="poes comunes bb-eqp-003 - monitoreo, revisión y registro de temperaturas" onclick="openDoc(10)"><span class="doc-icon">📄</span><span>BB-EQP-003 - Monitoreo, revisión y registro de temperaturas</span></button><button class="doc-link" data-doc-index="11" data-search="poes comunes bb-eqp-004 - alarmas, comunicación y respuesta fuera de horario" onclick="openDoc(11)"><span class="doc-icon">📄</span><span>BB-EQP-004 - Alarmas, comunicación y respuesta fuera de horario</span></button><button class="doc-link" data-doc-index="12" data-search="poes comunes bb-eqp-005 - mantenimiento preventivo, correctivo y calificación de equipos" onclick="openDoc(12)"><span class="doc-icon">📄</span><span>BB-EQP-005 - Mantenimiento preventivo, correctivo y calificación de equipos</span></button><button class="doc-link" data-doc-index="13" data-search="poes comunes bb-eqp-006 - contingencia, capacidad de respaldo y traslado de muestras" onclick="openDoc(13)"><span class="doc-icon">📄</span><span>BB-EQP-006 - Contingencia, capacidad de respaldo y traslado de muestras</span></button><button class="doc-link" data-doc-index="14" data-search="poes comunes bb-gen-001 - organización, gobierno y funcionamiento general del biobanco" onclick="openDoc(14)"><span class="doc-icon">📄</span><span>BB-GEN-001 - Organización, gobierno y funcionamiento general del Biobanco</span></button><button class="doc-link" data-doc-index="15" data-search="poes comunes bb-gen-002 - gestión y control de documentos" onclick="openDoc(15)"><span class="doc-icon">📄</span><span>BB-GEN-002 - Gestión y control de documentos</span></button><button class="doc-link" data-doc-index="16" data-search="poes comunes bb-gen-003 - capacitación, habilitación y competencia del personal" onclick="openDoc(16)"><span class="doc-icon">📄</span><span>BB-GEN-003 - Capacitación, habilitación y competencia del personal</span></button><button class="doc-link" data-doc-index="17" data-search="poes comunes bb-gen-004 - acceso, circulación y visitas" onclick="openDoc(17)"><span class="doc-icon">📄</span><span>BB-GEN-004 - Acceso, circulación y visitas</span></button><button class="doc-link" data-doc-index="18" data-search="poes comunes bb-gen-005 - gestión de incidentes, desviaciones, no conformidades y capa" onclick="openDoc(18)"><span class="doc-icon">📄</span><span>BB-GEN-005 - Gestión de incidentes, desviaciones, no conformidades y CAPA</span></button><button class="doc-link" data-doc-index="19" data-search="poes comunes bb-gen-006 - auditorías internas y revisión de gestión" onclick="openDoc(19)"><span class="doc-icon">📄</span><span>BB-GEN-006 - Auditorías internas y revisión de gestión</span></button><button class="doc-link" data-doc-index="20" data-search="poes comunes bb-gen-007 - gestión de consentimiento informado, restricciones de uso y revocación" onclick="openDoc(20)"><span class="doc-icon">📄</span><span>BB-GEN-007 - Gestión de consentimiento informado, restricciones de uso y revocación</span></button><button class="doc-link" data-doc-index="21" data-search="poes comunes bb-mue-001 - recepción, aceptación y rechazo de muestras" onclick="openDoc(21)"><span class="doc-icon">📄</span><span>BB-MUE-001 - Recepción, aceptación y rechazo de muestras</span></button><button class="doc-link" data-doc-index="22" data-search="poes comunes bb-mue-002 - identificación, etiquetado y codificación" onclick="openDoc(22)"><span class="doc-icon">📄</span><span>BB-MUE-002 - Identificación, etiquetado y codificación</span></button><button class="doc-link" data-doc-index="23" data-search="poes comunes bb-mue-003 - asignación de ubicación, almacenamiento y recuperación" onclick="openDoc(23)"><span class="doc-icon">📄</span><span>BB-MUE-003 - Asignación de ubicación, almacenamiento y recuperación</span></button><button class="doc-link" data-doc-index="24" data-search="poes comunes bb-mue-004 - descongelamiento, manipulación, alicuotado y recongelamiento" onclick="openDoc(24)"><span class="doc-icon">📄</span><span>BB-MUE-004 - Descongelamiento, manipulación, alicuotado y recongelamiento</span></button><button class="doc-link" data-doc-index="25" data-search="poes comunes bb-mue-005 - retiro, distribución, derivación y envío de muestras" onclick="openDoc(25)"><span class="doc-icon">📄</span><span>BB-MUE-005 - Retiro, distribución, derivación y envío de muestras</span></button><button class="doc-link" data-doc-index="26" data-search="poes comunes bb-mue-006 - descarte, destrucción y disposición final" onclick="openDoc(26)"><span class="doc-icon">📄</span><span>BB-MUE-006 - Descarte, destrucción y disposición final</span></button></div></div><div class="section" data-category="Unidad A · Investigación institucional"><button class="section-title" onclick="toggleSection(this)"><span>Unidad A · Investigación institucional</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link index-link" data-doc-index="27" data-search="unidad a · investigación institucional 03 indice poe unidad a investigacion institucional" onclick="openDoc(27)"><span class="doc-icon">▤</span><span>03 Indice POE Unidad A Investigacion Institucional</span></button><button class="doc-link" data-doc-index="28" data-search="unidad a · investigación institucional bb-ins-001 - solicitud, evaluación y apertura de colección institucional" onclick="openDoc(28)"><span class="doc-icon">📄</span><span>BB-INS-001 - Solicitud, evaluación y apertura de colección institucional</span></button><button class="doc-link" data-doc-index="29" data-search="unidad a · investigación institucional bb-ins-002 - ingreso periódico de muestras a colecciones institucionales" onclick="openDoc(29)"><span class="doc-icon">📄</span><span>BB-INS-002 - Ingreso periódico de muestras a colecciones institucionales</span></button><button class="doc-link" data-doc-index="30" data-search="unidad a · investigación institucional bb-ins-003 - solicitud y autorización de muestras para investigación" onclick="openDoc(30)"><span class="doc-icon">📄</span><span>BB-INS-003 - Solicitud y autorización de muestras para investigación</span></button><button class="doc-link" data-doc-index="31" data-search="unidad a · investigación institucional bb-ins-004 - cesión a terceros y acuerdos de transferencia de material:datos" onclick="openDoc(31)"><span class="doc-icon">📄</span><span>BB-INS-004 - Cesión a terceros y acuerdos de transferencia de material:datos</span></button><button class="doc-link" data-doc-index="32" data-search="unidad a · investigación institucional bb-ins-005 - cierre de colección institucional" onclick="openDoc(32)"><span class="doc-icon">📄</span><span>BB-INS-005 - Cierre de colección institucional</span></button></div></div><div class="section" data-category="Unidad B · Servicios / Industria"><button class="section-title" onclick="toggleSection(this)"><span>Unidad B · Servicios / Industria</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link index-link" data-doc-index="33" data-search="unidad b · servicios / industria 04 indice poe unidad b servicios industria" onclick="openDoc(33)"><span class="doc-icon">▤</span><span>04 Indice POE Unidad B Servicios Industria</span></button><button class="doc-link" data-doc-index="34" data-search="unidad b · servicios / industria bb-cli-001 - evaluación y aceptación de servicios, protocolos clínicos y contratos" onclick="openDoc(34)"><span class="doc-icon">📄</span><span>BB-CLI-001 - Evaluación y aceptación de servicios, protocolos clínicos y contratos</span></button><button class="doc-link" data-doc-index="35" data-search="unidad b · servicios / industria bb-cli-002 - recepción de muestras de protocolos clínicos" onclick="openDoc(35)"><span class="doc-icon">📄</span><span>BB-CLI-002 - Recepción de muestras de protocolos clínicos</span></button><button class="doc-link" data-doc-index="36" data-search="unidad b · servicios / industria bb-cli-003 - cadena de custodia para muestras de industria" onclick="openDoc(36)"><span class="doc-icon">📄</span><span>BB-CLI-003 - Cadena de custodia para muestras de industria</span></button><button class="doc-link" data-doc-index="37" data-search="unidad b · servicios / industria bb-cli-004 - gestión de desviaciones de protocolo y no conformidades del patrocinador" onclick="openDoc(37)"><span class="doc-icon">📄</span><span>BB-CLI-004 - Gestión de desviaciones de protocolo y no conformidades del patrocinador</span></button><button class="doc-link" data-doc-index="38" data-search="unidad b · servicios / industria bb-cli-005 - excursiones de temperatura en estudios patrocinados" onclick="openDoc(38)"><span class="doc-icon">📄</span><span>BB-CLI-005 - Excursiones de temperatura en estudios patrocinados</span></button><button class="doc-link" data-doc-index="39" data-search="unidad b · servicios / industria bb-cli-006 - visitas de monitoría, auditorías de patrocinadores y autoridades" onclick="openDoc(39)"><span class="doc-icon">📄</span><span>BB-CLI-006 - Visitas de monitoría, auditorías de patrocinadores y autoridades</span></button><button class="doc-link" data-doc-index="40" data-search="unidad b · servicios / industria bb-cli-007 - preparación y envío nacional:internacional de muestras de protocolos clínicos" onclick="openDoc(40)"><span class="doc-icon">📄</span><span>BB-CLI-007 - Preparación y envío nacional:internacional de muestras de protocolos clínicos</span></button><button class="doc-link" data-doc-index="41" data-search="unidad b · servicios / industria bb-cli-008 - archivo esencial del servicio:estudio" onclick="openDoc(41)"><span class="doc-icon">📄</span><span>BB-CLI-008 - Archivo esencial del servicio:estudio</span></button><button class="doc-link" data-doc-index="42" data-search="unidad b · servicios / industria bb-cli-009 - cierre de protocolo:servicio y disposición final" onclick="openDoc(42)"><span class="doc-icon">📄</span><span>BB-CLI-009 - Cierre de protocolo:servicio y disposición final</span></button></div></div><div class="section" data-category="Formularios y registros"><button class="section-title" onclick="toggleSection(this)"><span>Formularios y registros</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link" data-doc-index="43" data-search="formularios y registros 05 formularios y registros maestros" onclick="openDoc(43)"><span class="doc-icon">📄</span><span>05 Formularios y Registros Maestros</span></button><button class="doc-link" data-doc-index="44" data-search="formularios y registros bb-for-001 - matriz de equipos y asignación de salas" onclick="openDoc(44)"><span class="doc-icon">📄</span><span>BB-FOR-001 - Matriz de equipos y asignación de salas</span></button><button class="doc-link" data-doc-index="45" data-search="formularios y registros bb-for-002 - registro diario de revisión de temperaturas" onclick="openDoc(45)"><span class="doc-icon">📄</span><span>BB-FOR-002 - Registro diario de revisión de temperaturas</span></button><button class="doc-link" data-doc-index="46" data-search="formularios y registros bb-for-003 - reporte de alarma : excursión de temperatura" onclick="openDoc(46)"><span class="doc-icon">📄</span><span>BB-FOR-003 - Reporte de alarma : excursión de temperatura</span></button><button class="doc-link" data-doc-index="47" data-search="formularios y registros bb-for-004 - registro de acceso y visitas" onclick="openDoc(47)"><span class="doc-icon">📄</span><span>BB-FOR-004 - Registro de acceso y visitas</span></button><button class="doc-link" data-doc-index="48" data-search="formularios y registros bb-for-005 - ficha de capacitación y competencia" onclick="openDoc(48)"><span class="doc-icon">📄</span><span>BB-FOR-005 - Ficha de capacitación y competencia</span></button><button class="doc-link" data-doc-index="49" data-search="formularios y registros bb-for-006 - ficha de mantenimiento : intervención de equipo" onclick="openDoc(49)"><span class="doc-icon">📄</span><span>BB-FOR-006 - Ficha de mantenimiento : intervención de equipo</span></button><button class="doc-link" data-doc-index="50" data-search="formularios y registros bb-for-007 - recepción, aceptación o rechazo de muestras" onclick="openDoc(50)"><span class="doc-icon">📄</span><span>BB-FOR-007 - Recepción, aceptación o rechazo de muestras</span></button><button class="doc-link" data-doc-index="51" data-search="formularios y registros bb-for-008 - movimiento de muestras : cadena de custodia" onclick="openDoc(51)"><span class="doc-icon">📄</span><span>BB-FOR-008 - Movimiento de muestras : cadena de custodia</span></button><button class="doc-link" data-doc-index="52" data-search="formularios y registros bb-for-009 - traslado por contingencia : backup" onclick="openDoc(52)"><span class="doc-icon">📄</span><span>BB-FOR-009 - Traslado por contingencia : backup</span></button><button class="doc-link" data-doc-index="53" data-search="formularios y registros bb-for-010 - desviación, no conformidad y capa" onclick="openDoc(53)"><span class="doc-icon">📄</span><span>BB-FOR-010 - Desviación, no conformidad y CAPA</span></button><button class="doc-link" data-doc-index="54" data-search="formularios y registros bb-for-011 - revocación : modificación de autorización de uso" onclick="openDoc(54)"><span class="doc-icon">📄</span><span>BB-FOR-011 - Revocación : modificación de autorización de uso</span></button><button class="doc-link" data-doc-index="55" data-search="formularios y registros bb-for-012 - solicitud de apertura de colección institucional" onclick="openDoc(55)"><span class="doc-icon">📄</span><span>BB-FOR-012 - Solicitud de apertura de colección institucional</span></button><button class="doc-link" data-doc-index="56" data-search="formularios y registros bb-for-013 - evaluación de nuevo servicio : protocolo de industria" onclick="openDoc(56)"><span class="doc-icon">📄</span><span>BB-FOR-013 - Evaluación de nuevo servicio : protocolo de industria</span></button><button class="doc-link" data-doc-index="57" data-search="formularios y registros bb-for-014 - solicitud y autorización de salida : envío" onclick="openDoc(57)"><span class="doc-icon">📄</span><span>BB-FOR-014 - Solicitud y autorización de salida : envío</span></button><button class="doc-link" data-doc-index="58" data-search="formularios y registros bb-for-015 - acta de destrucción : disposición final" onclick="openDoc(58)"><span class="doc-icon">📄</span><span>BB-FOR-015 - Acta de destrucción : disposición final</span></button><button class="doc-link" data-doc-index="59" data-search="formularios y registros bb-for-016 - conciliación físico-noraybanks" onclick="openDoc(59)"><span class="doc-icon">📄</span><span>BB-FOR-016 - Conciliación físico-NORAYBANKS</span></button><button class="doc-link" data-doc-index="60" data-search="formularios y registros bb-for-017 - checklist de apertura:cierre diario de sala" onclick="openDoc(60)"><span class="doc-icon">📄</span><span>BB-FOR-017 - Checklist de apertura:cierre diario de sala</span></button></div></div><div class="section" data-category="Matriz documental y regulatoria"><button class="section-title" onclick="toggleSection(this)"><span>Matriz documental y regulatoria</span><span class="arrow">▾</span></button><div class="section-content"><button class="doc-link" data-doc-index="61" data-search="matriz documental y regulatoria 06 matriz maestra documental y regulatoria" onclick="openDoc(61)"><span class="doc-icon">📄</span><span>06 Matriz Maestra Documental y Regulatoria</span></button></div></div>
+
+    </div>
+
+
+  </aside>
+
+
+  <!-- ========================================================
+       CONTENIDO
+  ========================================================= -->
+
+  <main class="main">
+
+
+    <!-- ======================================================
+         TOOLBAR
+    ======================================================= -->
+
+    <div class="toolbar">
+
+
+      <button
+        id="prevButton"
+        onclick="previousDoc()"
+        title="Documento anterior"
+      >
+        ← Anterior
+      </button>
+
+
+      <button
+        id="nextButton"
+        onclick="nextDoc()"
+        title="Documento siguiente"
+      >
+        Siguiente →
+      </button>
+
+
+      <button
+        id="wordButton"
+        class="word-button"
+        onclick="openWord()"
+        title="Abrir o descargar el documento Word original"
+      >
+        Abrir Word original
+      </button>
+
+
+      <div class="document-info">
+
+        <div
+          id="currentTitle"
+          class="current-title"
+        >
+        </div>
+
+        <div
+          id="currentCategory"
+          class="current-category"
+        >
+        </div>
+
+      </div>
+
+
+      <div
+        id="counter"
+        class="counter"
+      >
+      </div>
+
+
+    </div>
+
+
+    <!-- ======================================================
+         VISOR
+    ======================================================= -->
+
+    <div class="viewer">
+
+      <iframe
+        id="docframe"
+        title="Visor de documentos"
+      >
+      </iframe>
+
+    </div>
+
+
+  </main>
+
+
+</div>
+
+
+<script>
+
+
+// ============================================================
+// DATOS DE DOCUMENTOS
+// ============================================================
+
+const docs = [
+
+{"index":1,"title":"01 Manual Marco Biobanco HEC CEMET","category":"Manual marco","html":"docs/doc_001.html","word":"originales/doc_001.docx"},
+{"index":2,"title":"1. Índice POE Comunes Biobanco HEC CEMET","category":"POEs comunes","html":"docs/doc_002.html","word":"originales/doc_002.docx"},
+{"index":3,"title":"BB-BIO-001 - Bioseguridad, vestimenta y elementos de protección personal","category":"POEs comunes","html":"docs/doc_003.html","word":"originales/doc_003.docx"},
+{"index":4,"title":"BB-BIO-002 - Limpieza, desinfección y orden de áreas","category":"POEs comunes","html":"docs/doc_004.html","word":"originales/doc_004.docx"},
+{"index":5,"title":"BB-BIO-003 - Gestión de residuos, derrames y exposición accidental","category":"POEs comunes","html":"docs/doc_005.html","word":"originales/doc_005.docx"},
+{"index":6,"title":"BB-DAT-001 - Registro y trazabilidad en NORAYBANKS","category":"POEs comunes","html":"docs/doc_006.html","word":"originales/doc_006.docx"},
+{"index":7,"title":"BB-DAT-002 - Confidencialidad, codificación, acceso y exportación de datos","category":"POEs comunes","html":"docs/doc_007.html","word":"originales/doc_007.docx"},
+{"index":8,"title":"BB-EQP-001 - Operación de ultrafreezers de -80 °C","category":"POEs comunes","html":"docs/doc_008.html","word":"originales/doc_008.docx"},
+{"index":9,"title":"BB-EQP-002 - Operación segura de ultrafreezers de -150 °C","category":"POEs comunes","html":"docs/doc_009.html","word":"originales/doc_009.docx"},
+{"index":10,"title":"BB-EQP-003 - Monitoreo, revisión y registro de temperaturas","category":"POEs comunes","html":"docs/doc_010.html","word":"originales/doc_010.docx"},
+{"index":11,"title":"BB-EQP-004 - Alarmas, comunicación y respuesta fuera de horario","category":"POEs comunes","html":"docs/doc_011.html","word":"originales/doc_011.docx"},
+{"index":12,"title":"BB-EQP-005 - Mantenimiento preventivo, correctivo y calificación de equipos","category":"POEs comunes","html":"docs/doc_012.html","word":"originales/doc_012.docx"},
+{"index":13,"title":"BB-EQP-006 - Contingencia, capacidad de respaldo y traslado de muestras","category":"POEs comunes","html":"docs/doc_013.html","word":"originales/doc_013.docx"},
+{"index":14,"title":"BB-GEN-001 - Organización, gobierno y funcionamiento general del Biobanco","category":"POEs comunes","html":"docs/doc_014.html","word":"originales/doc_014.docx"},
+{"index":15,"title":"BB-GEN-002 - Gestión y control de documentos","category":"POEs comunes","html":"docs/doc_015.html","word":"originales/doc_015.docx"},
+{"index":16,"title":"BB-GEN-003 - Capacitación, habilitación y competencia del personal","category":"POEs comunes","html":"docs/doc_016.html","word":"originales/doc_016.docx"},
+{"index":17,"title":"BB-GEN-004 - Acceso, circulación y visitas","category":"POEs comunes","html":"docs/doc_017.html","word":"originales/doc_017.docx"},
+{"index":18,"title":"BB-GEN-005 - Gestión de incidentes, desviaciones, no conformidades y CAPA","category":"POEs comunes","html":"docs/doc_018.html","word":"originales/doc_018.docx"},
+{"index":19,"title":"BB-GEN-006 - Auditorías internas y revisión de gestión","category":"POEs comunes","html":"docs/doc_019.html","word":"originales/doc_019.docx"},
+{"index":20,"title":"BB-GEN-007 - Gestión de consentimiento informado, restricciones de uso y revocación","category":"POEs comunes","html":"docs/doc_020.html","word":"originales/doc_020.docx"},
+{"index":21,"title":"BB-MUE-001 - Recepción, aceptación y rechazo de muestras","category":"POEs comunes","html":"docs/doc_021.html","word":"originales/doc_021.docx"},
+{"index":22,"title":"BB-MUE-002 - Identificación, etiquetado y codificación","category":"POEs comunes","html":"docs/doc_022.html","word":"originales/doc_022.docx"},
+{"index":23,"title":"BB-MUE-003 - Asignación de ubicación, almacenamiento y recuperación","category":"POEs comunes","html":"docs/doc_023.html","word":"originales/doc_023.docx"},
+{"index":24,"title":"BB-MUE-004 - Descongelamiento, manipulación, alicuotado y recongelamiento","category":"POEs comunes","html":"docs/doc_024.html","word":"originales/doc_024.docx"},
+{"index":25,"title":"BB-MUE-005 - Retiro, distribución, derivación y envío de muestras","category":"POEs comunes","html":"docs/doc_025.html","word":"originales/doc_025.docx"},
+{"index":26,"title":"BB-MUE-006 - Descarte, destrucción y disposición final","category":"POEs comunes","html":"docs/doc_026.html","word":"originales/doc_026.docx"},
+{"index":27,"title":"03 Indice POE Unidad A Investigacion Institucional","category":"Unidad A · Investigación institucional","html":"docs/doc_027.html","word":"originales/doc_027.docx"},
+{"index":28,"title":"BB-INS-001 - Solicitud, evaluación y apertura de colección institucional","category":"Unidad A · Investigación institucional","html":"docs/doc_028.html","word":"originales/doc_028.docx"},
+{"index":29,"title":"BB-INS-002 - Ingreso periódico de muestras a colecciones institucionales","category":"Unidad A · Investigación institucional","html":"docs/doc_029.html","word":"originales/doc_029.docx"},
+{"index":30,"title":"BB-INS-003 - Solicitud y autorización de muestras para investigación","category":"Unidad A · Investigación institucional","html":"docs/doc_030.html","word":"originales/doc_030.docx"},
+{"index":31,"title":"BB-INS-004 - Cesión a terceros y acuerdos de transferencia de material:datos","category":"Unidad A · Investigación institucional","html":"docs/doc_031.html","word":"originales/doc_031.docx"},
+{"index":32,"title":"BB-INS-005 - Cierre de colección institucional","category":"Unidad A · Investigación institucional","html":"docs/doc_032.html","word":"originales/doc_032.docx"},
+{"index":33,"title":"04 Indice POE Unidad B Servicios Industria","category":"Unidad B · Servicios / Industria","html":"docs/doc_033.html","word":"originales/doc_033.docx"},
+{"index":34,"title":"BB-CLI-001 - Evaluación y aceptación de servicios, protocolos clínicos y contratos","category":"Unidad B · Servicios / Industria","html":"docs/doc_034.html","word":"originales/doc_034.docx"},
+{"index":35,"title":"BB-CLI-002 - Recepción de muestras de protocolos clínicos","category":"Unidad B · Servicios / Industria","html":"docs/doc_035.html","word":"originales/doc_035.docx"},
+{"index":36,"title":"BB-CLI-003 - Cadena de custodia para muestras de industria","category":"Unidad B · Servicios / Industria","html":"docs/doc_036.html","word":"originales/doc_036.docx"},
+{"index":37,"title":"BB-CLI-004 - Gestión de desviaciones de protocolo y no conformidades del patrocinador","category":"Unidad B · Servicios / Industria","html":"docs/doc_037.html","word":"originales/doc_037.docx"},
+{"index":38,"title":"BB-CLI-005 - Excursiones de temperatura en estudios patrocinados","category":"Unidad B · Servicios / Industria","html":"docs/doc_038.html","word":"originales/doc_038.docx"},
+{"index":39,"title":"BB-CLI-006 - Visitas de monitoría, auditorías de patrocinadores y autoridades","category":"Unidad B · Servicios / Industria","html":"docs/doc_039.html","word":"originales/doc_039.docx"},
+{"index":40,"title":"BB-CLI-007 - Preparación y envío nacional:internacional de muestras de protocolos clínicos","category":"Unidad B · Servicios / Industria","html":"docs/doc_040.html","word":"originales/doc_040.docx"},
+{"index":41,"title":"BB-CLI-008 - Archivo esencial del servicio:estudio","category":"Unidad B · Servicios / Industria","html":"docs/doc_041.html","word":"originales/doc_041.docx"},
+{"index":42,"title":"BB-CLI-009 - Cierre de protocolo:servicio y disposición final","category":"Unidad B · Servicios / Industria","html":"docs/doc_042.html","word":"originales/doc_042.docx"},
+{"index":43,"title":"05 Formularios y Registros Maestros","category":"Formularios y registros","html":"docs/doc_043.html","word":"originales/doc_043.docx"},
+{"index":44,"title":"BB-FOR-001 - Matriz de equipos y asignación de salas","category":"Formularios y registros","html":"docs/doc_044.html","word":"originales/doc_044.docx"},
+{"index":45,"title":"BB-FOR-002 - Registro diario de revisión de temperaturas","category":"Formularios y registros","html":"docs/doc_045.html","word":"originales/doc_045.docx"},
+{"index":46,"title":"BB-FOR-003 - Reporte de alarma : excursión de temperatura","category":"Formularios y registros","html":"docs/doc_046.html","word":"originales/doc_046.docx"},
+{"index":47,"title":"BB-FOR-004 - Registro de acceso y visitas","category":"Formularios y registros","html":"docs/doc_047.html","word":"originales/doc_047.docx"},
+{"index":48,"title":"BB-FOR-005 - Ficha de capacitación y competencia","category":"Formularios y registros","html":"docs/doc_048.html","word":"originales/doc_048.docx"},
+{"index":49,"title":"BB-FOR-006 - Ficha de mantenimiento : intervención de equipo","category":"Formularios y registros","html":"docs/doc_049.html","word":"originales/doc_049.docx"},
+{"index":50,"title":"BB-FOR-007 - Recepción, aceptación o rechazo de muestras","category":"Formularios y registros","html":"docs/doc_050.html","word":"originales/doc_050.docx"},
+{"index":51,"title":"BB-FOR-008 - Movimiento de muestras : cadena de custodia","category":"Formularios y registros","html":"docs/doc_051.html","word":"originales/doc_051.docx"},
+{"index":52,"title":"BB-FOR-009 - Traslado por contingencia : backup","category":"Formularios y registros","html":"docs/doc_052.html","word":"originales/doc_052.docx"},
+{"index":53,"title":"BB-FOR-010 - Desviación, no conformidad y CAPA","category":"Formularios y registros","html":"docs/doc_053.html","word":"originales/doc_053.docx"},
+{"index":54,"title":"BB-FOR-011 - Revocación : modificación de autorización de uso","category":"Formularios y registros","html":"docs/doc_054.html","word":"originales/doc_054.docx"},
+{"index":55,"title":"BB-FOR-012 - Solicitud de apertura de colección institucional","category":"Formularios y registros","html":"docs/doc_055.html","word":"originales/doc_055.docx"},
+{"index":56,"title":"BB-FOR-013 - Evaluación de nuevo servicio : protocolo de industria","category":"Formularios y registros","html":"docs/doc_056.html","word":"originales/doc_056.docx"},
+{"index":57,"title":"BB-FOR-014 - Solicitud y autorización de salida : envío","category":"Formularios y registros","html":"docs/doc_057.html","word":"originales/doc_057.docx"},
+{"index":58,"title":"BB-FOR-015 - Acta de destrucción : disposición final","category":"Formularios y registros","html":"docs/doc_058.html","word":"originales/doc_058.docx"},
+{"index":59,"title":"BB-FOR-016 - Conciliación físico-NORAYBANKS","category":"Formularios y registros","html":"docs/doc_059.html","word":"originales/doc_059.docx"},
+{"index":60,"title":"BB-FOR-017 - Checklist de apertura:cierre diario de sala","category":"Formularios y registros","html":"docs/doc_060.html","word":"originales/doc_060.docx"},
+{"index":61,"title":"06 Matriz Maestra Documental y Regulatoria","category":"Matriz documental y regulatoria","html":"docs/doc_061.html","word":"originales/doc_061.docx"}
+
+];
+
+
+// ============================================================
+// ESTADO
+// ============================================================
+
+let currentIndex = 1;
+
+
+// ============================================================
+// ABRIR DOCUMENTO
+// ============================================================
+
+function openDoc(index) {
+
+
+  if (
+    index < 1 ||
+    index > docs.length
+  ) {
+
+    return;
+  }
+
+
+  currentIndex = index;
+
+
+  const doc = docs[
+    currentIndex - 1
+  ];
+
+
+  // ----------------------------------------------------------
+  // Cargar HTML
+  // ----------------------------------------------------------
+
+  document
+    .getElementById(
+      "docframe"
+    )
+    .src = doc.html;
+
+
+  // ----------------------------------------------------------
+  // Título
+  // ----------------------------------------------------------
+
+  document
+    .getElementById(
+      "currentTitle"
+    )
+    .textContent = doc.title;
+
+
+  // ----------------------------------------------------------
+  // Categoría
+  // ----------------------------------------------------------
+
+  document
+    .getElementById(
+      "currentCategory"
+    )
+    .textContent = doc.category;
+
+
+  // ----------------------------------------------------------
+  // Contador
+  // ----------------------------------------------------------
+
+  document
+    .getElementById(
+      "counter"
+    )
+    .textContent =
+      "Documento " +
+      currentIndex +
+      " de " +
+      docs.length;
+
+
+  // ----------------------------------------------------------
+  // Botones anterior / siguiente
+  // ----------------------------------------------------------
+
+  document
+    .getElementById(
+      "prevButton"
+    )
+    .disabled =
+      currentIndex === 1;
+
+
+  document
+    .getElementById(
+      "nextButton"
+    )
+    .disabled =
+      currentIndex === docs.length;
+
+
+  // ----------------------------------------------------------
+  // Resaltar menú
+  // ----------------------------------------------------------
+
+  document
+    .querySelectorAll(
+      ".doc-link"
+    )
+    .forEach(
+      function(button) {
+
+        button
+          .classList
+          .remove(
+            "active"
+          );
+      }
+    );
+
+
+  const activeButton =
+    document.querySelector(
+      `.doc-link[data-doc-index="${currentIndex}"]`
+    );
+
+
+  if (
+    activeButton
+  ) {
+
+    activeButton
+      .classList
+      .add(
+        "active"
+      );
+
+
+    // --------------------------------------------------------
+    // Asegurar sección visible
+    // --------------------------------------------------------
+
+    const content =
+      activeButton.closest(
+        ".section-content"
+      );
+
+
+    if (
+      content
+    ) {
+
+      content.style.display =
+        "block";
+
+
+      const section =
+        content.closest(
+          ".section"
+        );
+
+
+      const arrow =
+        section.querySelector(
+          ".arrow"
+        );
+
+
+      if (
+        arrow
+      ) {
+
+        arrow.textContent =
+          "▾";
+      }
+    }
+  }
+}
+
+
+// ============================================================
+// DOCUMENTO ANTERIOR
+// ============================================================
+
+function previousDoc() {
+
+  if (
+    currentIndex > 1
+  ) {
+
+    openDoc(
+      currentIndex - 1
+    );
+  }
+}
+
+
+// ============================================================
+// DOCUMENTO SIGUIENTE
+// ============================================================
+
+function nextDoc() {
+
+  if (
+    currentIndex < docs.length
+  ) {
+
+    openDoc(
+      currentIndex + 1
+    );
+  }
+}
+
+
+// ============================================================
+// ABRIR WORD ORIGINAL
+// ============================================================
+
+function openWord() {
+
+  const doc = docs[
+    currentIndex - 1
+  ];
+
+
+  if (
+    !doc
+  ) {
+
+    return;
+  }
+
+
+  // El comportamiento dependerá del navegador:
+  //
+  // - puede abrir Word
+  // - puede descargar DOCX
+  // - puede abrir vista previa
+  //
+  // En todos los casos apunta al documento original copiado.
+
+  window.open(
+    doc.word,
+    "_blank"
+  );
+}
+
+
+// ============================================================
+// PLEGAR / DESPLEGAR SECCIÓN
+// ============================================================
+
+function toggleSection(button) {
+
+  const content =
+    button.nextElementSibling;
+
+
+  const arrow =
+    button.querySelector(
+      ".arrow"
+    );
+
+
+  if (
+    content.style.display === "none"
+  ) {
+
+    content.style.display =
+      "block";
+
+
+    if (
+      arrow
+    ) {
+
+      arrow.textContent =
+        "▾";
+    }
+
+  } else {
+
+    content.style.display =
+      "none";
+
+
+    if (
+      arrow
+    ) {
+
+      arrow.textContent =
+        "▸";
+    }
+  }
+}
+
+
+// ============================================================
+// BUSCADOR
+// ============================================================
+
+function filterDocs() {
+
+
+  const query =
+    document
+      .getElementById(
+        "search"
+      )
+      .value
+      .toLowerCase()
+      .trim();
+
+
+  const sections =
+    document
+      .querySelectorAll(
+        ".section"
+      );
+
+
+  sections.forEach(
+
+    function(section) {
+
+
+      const links =
+        section
+          .querySelectorAll(
+            ".doc-link"
+          );
+
+
+      let visible = 0;
+
+
+      links.forEach(
+
+        function(link) {
+
+
+          const searchText =
+            link
+              .getAttribute(
+                "data-search"
+              );
+
+
+          if (
+            query === "" ||
+            searchText.includes(
+              query
+            )
+          ) {
+
+            link.style.display =
+              "flex";
+
+            visible++;
+
+          } else {
+
+            link.style.display =
+              "none";
+          }
+        }
+      );
+
+
+      if (
+        visible > 0
+      ) {
+
+        section.style.display =
+          "block";
+
+
+        if (
+          query !== ""
+        ) {
+
+          const body =
+            section.querySelector(
+              ".section-content"
+            );
+
+
+          body.style.display =
+            "block";
+
+
+          const arrow =
+            section.querySelector(
+              ".arrow"
+            );
+
+
+          if (
+            arrow
+          ) {
+
+            arrow.textContent =
+              "▾";
+          }
+        }
+
+      } else {
+
+        section.style.display =
+          "none";
+      }
+    }
+  );
+}
+
+
+// ============================================================
+// ATAJOS DE TECLADO
+// ============================================================
+
+document.addEventListener(
+
+  "keydown",
+
+  function(event) {
+
+
+    // --------------------------------------------------------
+    // Alt + flecha izquierda
+    // --------------------------------------------------------
+
+    if (
+      event.altKey &&
+      event.key === "ArrowLeft"
+    ) {
+
+      event.preventDefault();
+
+      previousDoc();
+    }
+
+
+    // --------------------------------------------------------
+    // Alt + flecha derecha
+    // --------------------------------------------------------
+
+    if (
+      event.altKey &&
+      event.key === "ArrowRight"
+    ) {
+
+      event.preventDefault();
+
+      nextDoc();
+    }
+  }
+);
+
+
+// ============================================================
+// INICIALIZACIÓN
+// ============================================================
+
+window.addEventListener(
+
+  "DOMContentLoaded",
+
+  function() {
+
+    openDoc(1);
+  }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

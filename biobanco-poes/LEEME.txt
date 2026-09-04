@@ -1,0 +1,21 @@
+PORTAL DOCUMENTAL BIOBANCO HEC - CEMET
+========================================
+
+Archivo principal:
+index.html
+
+Contenido:
+- docs/: versiones HTML de los documentos
+- originales/: copias de los documentos Word originales
+- indice_documentos.csv: correspondencia entre archivos
+
+Para abrir el portal en macOS:
+
+open index.html
+
+Los nombres doc_001, doc_002, etc. son deliberados.
+Evitan problemas con tildes, ñ, símbolos y compatibilidad entre sistemas operativos.
+
+Cada vez que cambie un DOCX original debe volver a ejecutarse:
+
+Rscript generar_portal_POE.R
